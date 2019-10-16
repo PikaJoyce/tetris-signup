@@ -12,3 +12,17 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname, '../client/dist')));
 // Start the server on the provided port
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
+
+
+app.post('/*', (req, res) => {
+
+})
+
+app.get('*', async (req, res) => {
+  try {
+
+  }
+  catch{
+
+  }
+})
