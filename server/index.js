@@ -14,15 +14,15 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
 
 
-app.post('/*', (req, res) => {
+// app.post('/*', (req, res) => {
 
-})
+// })
 
-app.get('*', async (req, res) => {
-  try {
+// app.get('*', async (req, res) => {
+//   try {
 
-  }
-  catch{
+//   }
+//   catch{
 
-  }
-})
+//   }
+// })

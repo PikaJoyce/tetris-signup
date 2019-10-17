@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SignUp from './SignUp.jsx';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        Hello World
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <SignUp />
+  </div>
+);
+
 
 export default App;
