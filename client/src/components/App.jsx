@@ -8,7 +8,7 @@ export default function App() {
     console.log('dis is data', data)
     axios.post('/signUp', data)
       .then(res => {
-        console.log("we did it", res)
+        alert(`Success!`)
       })
       .catch(err => {
         alert('Please use valid JTetris username')

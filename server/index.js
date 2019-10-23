@@ -23,27 +23,14 @@ app.use(bodyParser.json());
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
 
 
-// app.post('/signUp', async (req, res) => {
-//   const { userName, discord } = req.body
-//   try {
-//     const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`)
-//     const { success } = db.addUser(req.body)
-//     res.status(200).send(data)
-//   }
-//   catch (err) {
-//     res.status(400).send('This user does not exist on JTetris')
-//   }
-// })
-
-app.post('/signUp', (req, res) => {
+app.post('/signUp', async (req, res) => {
   const { userName } = req.body
-  axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`)
-    .then(({ data }) => {
-      console.log('successful call to api', data)
-      db.addUser(req.body, res)
-      res.status(200).send(data)
-    })
-    .catch(err => {
-      res.status(400).send('GG no username exists in API try again')
-    })
+  try {
+    const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`)
+    db.addUser(req.body)
+    res.status(200).send(data)
+  }
+  catch (err) {
+    res.status(400).send('This user does not exist on JTetris')
+  }
 })
