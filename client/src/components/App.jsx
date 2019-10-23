@@ -11,7 +11,7 @@ export default function App() {
         console.log("we did it", res)
       })
       .catch(err => {
-        console.log("u fked up", err)
+        alert('Please use valid JTetris username')
       })
   };
   console.log(errors);
