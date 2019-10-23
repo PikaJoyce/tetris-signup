@@ -10,6 +10,11 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
+  resolve: {
+    alias: {
+      react: path.resolve('./node_modules/react')
+    }
+  },
   module: {
     rules: [
       {

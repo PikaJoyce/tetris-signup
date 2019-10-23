@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -w",
-    "start": "nodemon ./server/index.js"
+    "start": "nodemon ./server/index.js",
+    "lint": "eslint client/src --fix"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +30,8 @@
     "mysql": "^2.16.0",
     "nodemon": "^1.19.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "react-hook-form": "^3.24.1"
   },
   "babel": {
     "presets": [
