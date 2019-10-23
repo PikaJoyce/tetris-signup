@@ -18,12 +18,8 @@ export default function App() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="First name" name="First name" ref={register({ required: true, maxLength: 80 })} />
-      <input type="text" placeholder="Last name" name="Last name" ref={register({ required: true, maxLength: 100 })} />
-      <input type="text" placeholder="Email" name="Email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
-      <input type="tel" placeholder="Mobile number" name="Mobile number" ref={register({ required: true, minLength: 6, maxLength: 12 })} />
-      <input type="text" placeholder="Discord" name="Discord" ref={register({ required: true })} />
-
+      <input type="text" placeholder="JTetris Username" name="userName" ref={register({ required: true, maxLength: 80 })} />
+      <input type="text" placeholder="Discord" name="discord" ref={register({ required: true })} />
       <input type="submit" />
     </form>
   );

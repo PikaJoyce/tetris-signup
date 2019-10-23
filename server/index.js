@@ -10,6 +10,10 @@ const app = express();
 // Set a constant for the port that our express server will listen on
 const PORT = 3000;
 
+const db = require('../db/index');
+
+const axios = require('axios');
+
 // Serve static files. Any requests for specific files will be served if they exist in the provided folder
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -19,7 +23,15 @@ app.use(bodyParser.json());
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
 
 
-app.post('/signUp', (req, res) => {
-  const { body } = req
-  console.log('the bod', body)
+app.post('/signUp', async (req, res) => {
+  const { userName, discord } = req.body
+  console.log('username', userName, 'discord', discord)
+
+  try {
+    const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`)
+    console.log('data returned from api call', data)
+  }
+  catch (err) {
+    console.log('err has occured', err)
+  }
 })
