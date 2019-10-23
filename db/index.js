@@ -1,6 +1,14 @@
 const mysql = require('mysql');
 const mysqlConfig = require('./connection')
 
+// Please add the config details of your computer
+// module.exports = {
+//   host: 'HOSTNAME',
+//   user: 'USER',
+//   password: 'COMPUTERPASSWORD',
+//   database: 'accounts'
+// };
+
 const connection = mysql.createConnection(mysqlConfig);
 
 const addUser = (req) => {
