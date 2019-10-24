@@ -14,7 +14,8 @@ const connection = mysql.createConnection(mysqlConfig);
 const addUser = (req) => {
   connection.connect();
   const { userName, discord } = req
-  connection.query(`INSERT INTO accounts (name, discord) VALUES ("${userName}", "${discord}")`, (err, data) => {
+  const sql = `INSERT INTO accounts (name, discord) VALUES ("${connection.escape(userName)}", "${connection.escape(discord)}")`
+  connection.query(sql, (err, data) => {
     if (err) {
       console.log('Couldnt add to db', err)
       return err
