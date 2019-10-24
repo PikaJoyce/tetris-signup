@@ -11,14 +11,22 @@ app.use(bodyParser.json());
 
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
 
-app.post('/signUp', async (req, res) => {
-  const { userName } = req.body
-  try {
-    const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`)
-    db.addUser(req.body)
-    res.status(200).send(data)
+app.post('/signUp', (req, res) => {
+  const { userName } = req.body;
+
+  const apiAuth = async () => {
+    try {
+      const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`);
+      const dbAddUser = db.addUser(req.body, (err, success) => {
+        if (err) return err;
+        return success;
+      })
+    }
+    catch (err) {
+      res.status(400).send('This user does not exist on JTetris');
+    }
   }
-  catch (err) {
-    res.status(400).send('This user does not exist on JTetris')
-  }
+  Promise.resolve(apiAuth()).then(() => {
+    res.status(200).send('Successfully added')
+  })
 })
