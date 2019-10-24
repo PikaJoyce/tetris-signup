@@ -5,7 +5,6 @@ import axios from 'axios';
 export default function App() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    console.log('dis is data', data)
     axios.post('/signUp', data)
       .then(res => {
         alert(`Success!`)
@@ -14,7 +13,7 @@ export default function App() {
         alert('Please use valid JTetris username')
       })
   };
-  console.log(errors);
+  console.log('Please fill in valid JTetris username and discord');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

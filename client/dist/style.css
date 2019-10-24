@@ -1,0 +1,14 @@
+body {
+  display: flexbox;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background : url(background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#main {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
