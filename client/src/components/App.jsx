@@ -7,6 +7,7 @@ export default function App() {
   const onSubmit = data => {
     axios.post('/signUp', data)
       .then(res => {
+        console.log(res)
         alert(`Success!`)
       })
       .catch(err => {

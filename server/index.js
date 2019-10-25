@@ -17,16 +17,27 @@ app.post('/signUp', (req, res) => {
   const apiAuth = async () => {
     try {
       const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`);
-      const dbAddUser = db.addUser(req.body, (err, success) => {
-        if (err) return err;
-        return success;
-      })
+      writeToDb()
     }
     catch (err) {
-      res.status(400).send('This user does not exist on JTetris');
+      throw new err
     }
   }
-  Promise.resolve(apiAuth()).then(() => {
-    res.status(200).send('Successfully added')
-  })
+
+  const writeToDb = async () => {
+    try {
+      const dbAddUser = await db.addUser(req.body)
+    }
+    catch (err) {
+      throw new err
+    }
+  }
+
+  Promise.resolve(apiAuth())
+    .then(() => {
+      res.status(200).send('Successful')
+    })
+    .catch(err => {
+      res.status(500).send('Error in the server')
+    })
 })
