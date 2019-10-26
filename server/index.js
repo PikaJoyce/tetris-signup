@@ -12,21 +12,12 @@ app.use(bodyParser.json());
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
 
 app.post('/signUp', (req, res) => {
-  const { userName } = req.body;
+  const { userName } = req.body
 
   const apiAuth = async () => {
     try {
       const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`);
-      writeToDb()
-    }
-    catch (err) {
-      throw new err
-    }
-  }
-
-  const writeToDb = async () => {
-    try {
-      const dbAddUser = await db.addUser(req.body)
+      const dbAddUser = db.addUser(req.body)
     }
     catch (err) {
       throw new err
