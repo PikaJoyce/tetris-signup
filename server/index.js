@@ -16,8 +16,8 @@ app.post('/signUp', (req, res) => {
 
   const apiAuth = async () => {
     try {
-      const { data } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`);
-      const dbAddUser = db.addUser(req.body)
+      const { data: jstrisInfo } = await axios.get(`https://jstris.jezevec10.com/api/u/${userName}/records/1?mode=1`);
+      const dbAddUser = await db.addUser(req.body)
     }
     catch (err) {
       throw new err

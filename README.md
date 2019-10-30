@@ -9,8 +9,8 @@ npm install
 ```
 
 ```sh
-npm run react-dev
-npm start
+npm run react-dev : Builds the react app
+npm start : Starts up node
 ```
 
 Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>

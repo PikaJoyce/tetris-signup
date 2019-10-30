@@ -9,19 +9,21 @@ const mysqlConfig = require('./connection')
 //   database: 'accounts'
 // };
 
-const connection = mysql.createConnection(mysqlConfig);
+const connection = mysql.createConnection(mysqlConfig)
 
-const addUser = (req) => {
-  connection.connect();
+const addUser = async (req) => {
   const { userName, discord } = req
   const sql = `INSERT INTO accounts (name, discord) VALUES (${connection.escape(userName)}, ${connection.escape(discord)})`
-  connection.query(sql, (err, data) => {
-    if (err) {
-      return err
-    };
-    return data
-  })
-  connection.end();
+  try {
+    connection.connect();
+    let data = await connection.query(sql)
+  }
+  catch (err) {
+    throw new err
+  }
+  finally {
+    connection.end();
+  }
 }
 
 module.exports = { addUser }
